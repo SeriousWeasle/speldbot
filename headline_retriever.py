@@ -24,8 +24,16 @@ titlesnietspeld = treenietspeld.xpath("//a[@tabindex='1']/text()")
 websites = [["nos",titlesnos],["nu",titlesnu],["speld",titlesspeld],["telegraaf",titlestelegraaf],["nietspeld",titlesnietspeld]]
 
 for site in websites:
-    with open(site[0]+"headers.txt",'a') as dcmt:
-        dcmt.write(str(site[1]))
+    headers = site[0]+"headers.txt"
+    with open(headers,'r') as readingMAT:
+        print(readingMAT.read())
+        for TITLE in site[1]:
+            try:
+                if((readingMAT.index(TITLE) == False) == False):
+                    pass
+            except:
+                with open(headers,'a') as dcmt:
+                    dcmt.write(str(site[1]))
 
 print (titlesspeld)
 print (titlesnos)
