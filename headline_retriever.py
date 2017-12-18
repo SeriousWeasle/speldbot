@@ -25,14 +25,14 @@ websites = [["nos",titlesnos],["nu",titlesnu],["speld",titlesspeld],["telegraaf"
 
 for site in websites:
     headers = site[0]+"headers.txt"
-    with open(headers,'r') as readingMAT:
+    with open("headersmap/"+headers,'r') as readingMAT:
         EASYREADING = readingMAT.read()
         for TITLE in site[1]:
             try:
                 if((EASYREADING.index(TITLE) == False) == False):
                     pass
             except:
-                with open(headers,'a') as dcmt:
+                with open("headersmap/"+headers,'a') as dcmt:
                     dcmt.write(str(site[1]))
 
                     
