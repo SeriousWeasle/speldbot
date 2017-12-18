@@ -17,6 +17,12 @@ pagetelegraaf = requests.get("https://www.telegraaf.nl/")
 treetelegraaf = html.fromstring(pagetelegraaf.content)
 titlestelegraaf = treetelegraaf.xpath("//h2[@class='__headline break-words underline_hover underline_focus roboto-black-s gray2 top-margin-0 bottom-margin-0 right-padding-2']/text()")
 
+websites = [["nos",titlesnos],["nu",titlesnu],["speld",titlesspeld],["telegraaf",titlestelegraaf]]
+
+for site in websites:
+    with open(site[0]+"headers.txt",'r+') as dcmt:
+        dcmt.write(str(site[1]))
+
 print (titlesspeld)
 print (titlesnos)
 print (titlesnu)
