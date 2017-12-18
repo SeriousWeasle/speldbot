@@ -17,13 +17,18 @@ pagetelegraaf = requests.get("https://www.telegraaf.nl/")
 treetelegraaf = html.fromstring(pagetelegraaf.content)
 titlestelegraaf = treetelegraaf.xpath("//h2[@class='__headline break-words underline_hover underline_focus roboto-black-s gray2 top-margin-0 bottom-margin-0 right-padding-2']/text()")
 
-websites = [["nos",titlesnos],["nu",titlesnu],["speld",titlesspeld],["telegraaf",titlestelegraaf]]
+pagenietspeld = requests.get("https://www.reddit.com/r/nietdespeld/")
+treenietspeld = html.fromstring(pagenietspeld.content)
+titlesnietspeld = treenietspeld.xpath("//a[@tabindex='1']/text()")
+
+websites = [["nos",titlesnos],["nu",titlesnu],["speld",titlesspeld],["telegraaf",titlestelegraaf],["nietspeld",titlesnietspeld]]
 
 for site in websites:
-    with open(site[0]+"headers.txt",'r+') as dcmt:
+    with open(site[0]+"headers.txt",'a') as dcmt:
         dcmt.write(str(site[1]))
 
 print (titlesspeld)
 print (titlesnos)
 print (titlesnu)
 print (titlestelegraaf)
+print (titlesnietspeld)
