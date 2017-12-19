@@ -27,12 +27,11 @@ pagenietspeld = requests.get("https://www.reddit.com/r/nietdespeld/")
 treenietspeld = html.fromstring(pagenietspeld.content)
 titlesnietspeld = treenietspeld.xpath("//a[@tabindex='1']/text()")
 
-websites = [["nos",titlesnos],["nu",titlesnu],["speld",titlesspeld],["telegraaf",titlestelegraaf],["nietspeld",titlesnietspeld]]
+websites = [["nos",titlesnos],["nietspeld",titlesnietspeld],["nu",titlesnu],["telegraaf",titlestelegraaf],["speld",titlesspeld]]
 
 for site in websites:
     headers = site[0]+"headers.txt"
-    with open("headersmap/"+headers,'r+') as readingMAT:
-        readingMAT.write("[")
+    with open("headersmap/"+headers,'r') as readingMAT:
         EASYREADING = readingMAT.read()
         for TITLE in site[1]:
             try:
@@ -41,12 +40,9 @@ for site in websites:
             except:
                 with open("headersmap/"+headers,'a') as dcmt:
                     dcmt.write(str(TITLE))
-                    if(site[1].index(TITLE)!= (len(site[1])-1)):
-                        dcmt.write(",")
-    with open("headersmap/"+headers,'a') as dcmt:
-        dcmt.write("]")
+                    dcmt.write("|")
 
-                    
+
 #print (titlesspeld)
 #print (titlesnos)
 #print (titlesnu)
