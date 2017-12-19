@@ -2,10 +2,27 @@ from lxml import html
 import requests
 
 #complete despeld loop for eternity's bound
-#for year in [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019]:
-#    for month in range(13):
-#        for day in range(32):
-#            
+for year in [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019]:
+    for month in range(13):
+        for day in range(32):
+            try:
+                pagespeld4ever = requests.get("https://speld.nl/"+str(year)+"/"+str(month)+"/"+str(day)+"/")
+                treespeld4ever = html.fromstring(pagespeld4ever.content)
+                titlesspeld4ever = treespeld4ever.xpath("//a[@rel='bookmark']/text()")
+                print("current date:"+str(year)+"/"+str(month)+"/"+str(day))
+                with open("headersmap/speldheaders.txt",'r') as readingMAT:
+                    EASYREADING = readingMAT.read()
+                    for TITLE in site[1]:
+                        try:
+                            if((EASYREADING.index(TITLE) == False) == False):
+                                pass
+                        except:
+                            with open("headersmap/speldheaders.txt",'a') as dcmt:
+                                dcmt.write(str(TITLE))
+                                dcmt.write("|")
+            finally:
+                pass
+            
 
 pagespeld = requests.get("https://speld.nl/2017/12/13/")
 treespeld = html.fromstring(pagespeld.content)
@@ -41,6 +58,9 @@ for site in websites:
                 with open("headersmap/"+headers,'a') as dcmt:
                     dcmt.write(str(TITLE))
                     dcmt.write("|")
+            finally:
+                pass
+                
 
 
 #print (titlesspeld)
