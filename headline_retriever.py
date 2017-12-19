@@ -33,7 +33,7 @@ for site in websites:
                     pass
             except:
                 with open("headersmap/"+headers,'a') as dcmt:
-                    dcmt.write(str(site[1]))
+                    dcmt.write(str(TITLE))
 
                     
 #print (titlesspeld)
