@@ -12,7 +12,7 @@ for year in [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019]:
                 print("current date:"+str(year)+"/"+str(month)+"/"+str(day))
                 with open("headersmap/speldheaders.txt",'r') as readingMAT:
                     EASYREADING = readingMAT.read()
-                    for TITLE in site[1]:
+                    for TITLE in titlesspeld4ever:
                         try:
                             if((EASYREADING.index(TITLE) == False) == False):
                                 pass
