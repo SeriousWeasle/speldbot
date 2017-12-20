@@ -4,32 +4,32 @@ import time
 
 #complete despeld loop for eternity's bound
 #also can be commented out if all information is gotton
-Ftime=time.time()
-for year in [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019]:
-    for month in range(13):
-        for day in range(32):
-            try:
-                pagespeld4ever = requests.get("https://speld.nl/"+str(year)+"/"+str(month)+"/"+str(day)+"/")
-                treespeld4ever = html.fromstring(pagespeld4ever.content)
-                titlesspeld4ever = treespeld4ever.xpath("//a[@rel='bookmark']/text()")
-                print("current date:"+str(year)+"/"+str(month)+"/"+str(day))
-                with open("headersmap/speldheaders.txt",'r') as readingMAT:
-                    EASYREADING = readingMAT.read()
-                    for TITLE in titlesspeld4ever:
-                        try:
-                            if((EASYREADING.index(TITLE) == False) == False):
-                                pass
-                        except:
-                            with open("headersmap/speldheaders.txt",'a') as dcmt:
-                                try:
-                                    dcmt.write(str(TITLE))
-                                    dcmt.write("|")
-                                except:
-                                    pass
-            finally:
-                pass
-Fintime = time.time() - Ftime
-print("It took {} minutes to get though all of 'the speld'!".format(str(Fintime/60)))
+#Ftime=time.time()
+#for year in [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019]:
+#    for month in range(13):
+#        for day in range(32):
+#            try:
+ #               pagespeld4ever = requests.get("https://speld.nl/"+str(year)+"/"+str(month)+"/"+str(day)+"/")
+  #              treespeld4ever = html.fromstring(pagespeld4ever.content)
+   #             titlesspeld4ever = treespeld4ever.xpath("//a[@rel='bookmark']/text()")
+    #            print("current date:"+str(year)+"/"+str(month)+"/"+str(day))
+     #           with open("headersmap/speldheaders.txt",'r') as readingMAT:
+      #              EASYREADING = readingMAT.read()
+       #             for TITLE in titlesspeld4ever:
+        #                try:
+         #                   if((EASYREADING.index(TITLE) == False) == False):
+          #                      pass
+           #             except:
+            #                with open("headersmap/speldheaders.txt",'a') as dcmt:
+             #                   try:
+              #                      dcmt.write(str(TITLE))
+               #                     dcmt.write("|")
+                #                except:
+                 #                   pass
+#            finally:
+#                pass
+#Fintime = time.time() - Ftime
+#print("It took {} minutes to get though all of 'the speld'!".format(str(Fintime/60)))
             
 
 pagespeld = requests.get("https://speld.nl/2017/12/13/")
