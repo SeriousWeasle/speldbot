@@ -1,8 +1,11 @@
 from lxml import html
 import requests
+import time
 
 #complete despeld loop for eternity's bound
-for year in [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019]:
+#also can be commented out if all information is gotton
+Ftime=time.time()
+for year in [2008,2009,2010,2011,2012,2013,2014,2015,2016,2017,2018,2019]:
     for month in range(13):
         for day in range(32):
             try:
@@ -18,10 +21,15 @@ for year in [2010,2011,2012,2013,2014,2015,2016,2017,2018,2019]:
                                 pass
                         except:
                             with open("headersmap/speldheaders.txt",'a') as dcmt:
-                                dcmt.write(str(TITLE))
-                                dcmt.write("|")
+                                try:
+                                    dcmt.write(str(TITLE))
+                                    dcmt.write("|")
+                                except:
+                                    pass
             finally:
                 pass
+Fintime = time.time() - Ftime
+print("It took {} minutes to get though all of 'the speld'!".format(str(Fintime/60)))
             
 
 pagespeld = requests.get("https://speld.nl/2017/12/13/")
