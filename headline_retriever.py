@@ -32,7 +32,7 @@ import time
 #print("It took {} minutes to get though all of 'the speld'!".format(str(Fintime/60)))
             
 
-pagespeld = requests.get("https://speld.nl/2017/12/13/")
+pagespeld = requests.get("https://speld.nl/")
 treespeld = html.fromstring(pagespeld.content)
 titlesspeld = treespeld.xpath("//a[@rel='bookmark']/text()")
 
@@ -71,7 +71,7 @@ for site in websites:
                 
 
 
-#print (titlesspeld)
+print (titlesspeld)
 #print (titlesnos)
 #print (titlesnu)
 #print (titlestelegraaf)
